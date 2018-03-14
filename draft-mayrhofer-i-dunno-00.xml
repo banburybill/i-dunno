@@ -126,7 +126,7 @@
              </artwork>
            </figure>
 
-           <section title='Forming I-DUNNO)'>
+           <section title='Forming I-DUNNO'>
              <t>
                In order to convert an IP address into I-DUNNO, the following steps are performed:
                <list style='numbers'>
@@ -162,7 +162,7 @@
 	   </section>
 	   <section title='Deforming I-DUNNO'>
 	     <t>
-               This section is intentionally omitted. The machines will know to do it, and by definition humans should not attempt the process.
+               This section is intentionally omitted. The machines will knowhow to do it, and by definition humans SHOULD NOT attempt the process.
              </t>
 	   </section>
 	</section>
@@ -189,14 +189,19 @@
 	   </section>
 	   
 	<section title='IANA Considerations'>
-	   <t>In order to foster interopability, IANA is asked to revoke all IPv4 and IPv6 allocations which cannot be represented by a valid I-DUNNO. Not that this might foster IPv6 deployment significantly.
-	   Local Internet Registries are encouraged to follow up with similar policies.
-	   </t>
-	   <t>TODO: reverse delegations based on I-DUNNO?</t>
-	   <t>TODO: Recommend that RFC5513 is extended to acronyms beyond three characters, particularly those with Seven Letters (SLA).</t>
+	   <t>Future work might extend I-DUNNO to also represent IP 
+           prefixes. In that case, IANA is requested to revoke all
+	   IPv4 and IPv6 allocations which cannot be represented as
+           a valid I-DUNNO. Note that because of their limited length,
+           IPv4 prefixes are much more likely to be affected than IPv6 
+           allocations. This might hence foster IPv6 deployment 
+           significantly, which in turn creates more potential for I-DUNNOs
+           with a satisfactory Confusion Level.
+           </t>
+           <t>Furthermore, IANA is requested to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. Note that while "I-DUNNO" qualifies for that registry, actual I-DUNNOs don't, even if they consist of seven Letters.</t>
 	</section>
 	<section title="Security Considerations">
-     <t>In tradition with many other RFCs, this exercise is left to the reader.</t>
+     <t>In tradition with many other RFCs, this exercise is left to the reader. </t>
 	</section>
   </middle>
   <back>
