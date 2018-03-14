@@ -20,6 +20,8 @@
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6916.xml">
 <!ENTITY rfc3629 PUBLIC ""
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml">
+<!ENTITY rfc5513 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5513.xml">
 ]>
 
 <rfc category="exp" docName="draft-mayrhofer-i-dunno-00"
@@ -160,9 +162,9 @@
 		 </list>
 		 </t>
 	   </section>
-	   <section title='Deforming I-DUNNO'>
+	   <section title='Deforming I-DUNNO' anchor='deform'>
 	     <t>
-               This section is intentionally omitted. The machines will knowhow to do it, and by definition humans SHOULD NOT attempt the process.
+               This section is intentionally omitted. The machines will know how to do it, and by definition humans SHOULD NOT attempt the process.
              </t>
 	   </section>
 	</section>
@@ -201,7 +203,8 @@
            <t>Furthermore, IANA is requested to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. Note that while "I-DUNNO" qualifies for that registry, actual I-DUNNOs don't, even if they consist of seven Letters.</t>
 	</section>
 	<section title="Security Considerations">
-     <t>In tradition with many other RFCs, this exercise is left to the reader. </t>
+          <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are know to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
+     <t>In tradition with many other RFCs, this section was written last, when authors ran out of ideas and energy. Hence, the exercise if mostly left to the reader.</t>
 	</section>
   </middle>
   <back>
@@ -216,6 +219,7 @@
 		&rfc1883;
 		&rfc4291;
 		&rfc5952;
+		&rfc5513;
 	</references>
   </back>
 </rfc>
