@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+ <!ENTITY rfc2119 PUBLIC ""
+          "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY rfc7830 PUBLIC ""
+          "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7830.xml">
+]>
+
+<rfc category="exp" docName="draft-mayrhofer-i-dunno-00"
+  ipr="trust200902">
+  <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+  <?rfc toc="yes" ?>
+  <?rfc symrefs="yes" ?>
+  <?rfc sortrefs="yes"?>
+  <?rfc iprnotified="no" ?>
+  <?rfc strict="yes" ?>
+  <front>
+    <title abbrev="draft-mayrhofer-i-dunno">The Internationalized Deliberately Unreadable Network NOtation (I-DUNNO)</title>
+
+    <author initials="A.M." surname="Mayrhofer"
+      fullname="Alexander Mayrhofer">
+<!--      <organization>nic.at GmbH</organization> -->
+      <address>
+<!--    <postal>
+     <street>Karlsplatz 1/2/9</street>
+     <city>Vienna</city>
+     <code>1010</code>
+     <country>Austria</country>
+    </postal> -->
+    <email>alex@i-dunno.at</email>
+	<uri>https://i-dunno.at/</uri>
+   </address>
+   </author>
+   <date year="2018"/>
+   <area>Operations and Management Area</area>
+    <!-- <workgroup></workgroup> -->
+    <abstract>
+      <t>
+	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
+	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, confusing IP addresses.
+	  This pamphlet specifies the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
+	  to these ludicrious attempts (TODO: of mankind to invade into ... repetition of above?)
+	  </t>
+    </abstract>
+  </front>
+  <middle>
+  <section title="Introduction">
+  	  
+	  <t>
+	  The Internet Protocol "is designed for use in interconnected systems of
+	  packet-switched computer communication networks" (<xref target='RFC791'/>) - neither the word "humans" nor "users" occur in the specification, though 
+	  they are considered indirectly as a communal whole in a philosophical statement: "A name indicates what we seek." - which clearly indicates
+	  that names rather than addresses should be of concern to humans.</t>
+
+	  <t>The specification of Domain Names (<xref target='RFC1034'/>), mentions "users" several times, and even includes the word "humans", even 
+	  though is positioned slightly unfortunate in context of "annoying" and "can wreak havoc" (See Section 5.2.3 of RFC1034). Nevertheless, this is 
+	  a clear indication that Domain Names were made for Humans, while IP addresses were not.</t>
+
+	  <t>
+	  It appears therefore quite logical that a human-readable (textual) representation of IP addresses was just very vaguely specified in Section 2.1 of <xref target='RFC1123'/>. 
+	  Subsequently, a directed effort to make IP addresses confusing was introduced in <xref target='RFC1883'/>, and more amazing options to puzzle humans 
+	  were offered in Section 2.2. and 2.3. of <xref target='RFC4291'/>. These early attempts to hamper efforts by humans to read, understand and spell IP
+	  addressing schemes were unfortunately jeopardized in <xref target='RFC5952'/>.
+	  </t>
+	  
+	  <t>In order to permanently prevent humans from being able to read IP address notations, this document specifies the "Internationalized 
+	  Deliberately Unreadable Network NOtation" (I-DUNNO). Ab^H^Hperusing the intricacies, inaccuracies and chaotic disorder of what they
+	  call a "Cultural Technique" (also known as "Script"), I-DUNNO 
+	  expresses IP addresses and prefixes as a set of Unicode codepoints, TODO (using their own weapons against them).
+	  </t>
+
+	<t>TODO: Compliance LEvels ("party pooper") - confusables, non printable, DISALLOWED - see below?</t>
+	</section>
+    <section anchor="terminology" title="Terminology">
+      <t> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+        "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", 
+		"NOT RECOMMENDED", "MAY", and
+        "OPTIONAL" in this document MAY be interpreted as described
+        in <xref target="RFC2119"/>. </t>
+	  <t>TODO refer to RFC6919</t>
+	  <t> Additionally, the phrase "CAREFULLY CONSIDER" means that implementors 
+	  SHALL skim the Abstract before copying the "Examples" section into their code.
+	  </t>
+	  <t>TODO: Definition for the two notations (the traditional "party pooper" notation, and the "very funny" I-DUNNO compatible notation)</t>
+	 </section>
+	<section title='The Notation'>
+	<t>I-DUNNO leverages <xref target='RFC3629'>UTF-8</xref> to obfuscate IP addresses for humans. UTF-8 uses sequences between 1 and 4 octets to represent codepoints as follows:</t>
+	      <figure align="center" anchor="UTF8">
+          <preamble> </preamble>
+<artwork>
+   Char. number range  |        UTF-8 octet sequence          
+      (hexadecimal)    |              (binary)                
+   --------------------+--------------------------------------
+   0000 0000-0000 007F | 0xxxxxxx 
+   0000 0080-0000 07FF | 110xxxxx 10xxxxxx
+   0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+   0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+</artwork>	
+	</figure>
+	<t>A UTF-8 octet sequence 
+	<t>Transcoding between plain, traditional (boring) IP address 
+	notations and I-DUNNO is performed as follows:</t>
+	   <section title='Encoding to I-DUNNO)'>
+	     <t>
+		 In order to convert the Boring Notation of an IP address into I-DUNNO, the following steps are performed:
+		 <list style='numbers'>
+		   <t>The octets of the Boring Notation are written as a bitstring in Network Byte order.</t>
+		   <t>TODO - consider adding CIDR prefix length (rfc4632) as additional bits?</t>
+		   <t>Working from left to right, the bitstring (32 bits for IPv4, 128 bits for IPv6) is allocated to 
+		   UTF-8 octet sequences.</t>
+		   <t>Note that since the number of combinations of UTF-8 octet sequence sizes accomodating exactly 32 or 128 bits 
+		   are limited, padding the bitstring for the last UTF-8 octet sequence is allowed (but only for the last one!). This means that the bitstring may be 
+		   padded with no more than 20 bits (TODO explain - 4 octect UTF 8 is 21 significant bits - clarify text). Content of padding can be chosen (TODO fix language) in order to fulfill requirements (see below).
+		   </t>
+		   <t>The resulting sequence of UTF-8 octet sequences constitutes the I-DUNNO notation, and may be presented to unsuspecting humans.</t>
+		 </list>
+		 </t>
+	   </section>
+	   <section title='Decoding (I-DUNNO to Boring)'>
+	     <t>TODO
+		 </t>
+	   </section>
+	</section>
+	<section title='I-DUNNO Confusion Level Requirements'>
+	     <t>A valid I-DUNNO MUST at contain at least one UTF-8 octet sequence with a length beyond one octet. Codepoints which are currently 
+		 allocated SHOULD be preferred over unallocated ones. Mixing of Unicode scripts is RECOMMENDED, as is mixing scripts with 
+		 different directionality. </t>
+		 <t>In order to distinguish an I-DUNNO from an IDN label, a valid I-DUNNO MUST contain at least one UTF-8 sequence corresponding to an 
+		 IDNA2008 DISALLOWED codepoint.</t>
+		 <t>Non printable characters are a welcome addition too, as are Confusables. No code point left behind!</t>
+    
+	<t>The Confusion Score of I-DUNNO is calculated as follows (Note: Old text, TODO - replaced by text above?):
+		 <list style='bullets'>
+		    <t>For each UTF-8 octet sequence that corresponds to an allocated code point, the score is increased by the UTF-8 octet sequence length.</t>
+			<t>For each Unicode script used in the I-DUNNO, the score is increased by 3 points.</t>
+			<t>For each codepoint listed as "confusable" (TODO xref), the score is increased by 10 points.</t>
+			<t>For each non-printable .... </t>
+	     </list>
+    </t>
+		 <t>Mixing of Unicode scripts is RECOMMENDED, as is mixing scripts with 
+		 different directionality. </t>
+		 <t>Non printable characters are a welcome addition too, as are Confusables. Contrary to Domain Names, no code point is left behind</t>
+		 <t>An I-DUNNO containing DISALLOWED characters according to IDNA2008 (TODO xref) </t>
+	   </section>
+	   
+	<section title='IANA Considerations'>
+	   <t>In order to foster interopability, IANA is asked to revoke all IPv4 and IPv6 allocations which cannot be represented by a valid I-DUNNO. Not that this might foster IPv6 deployment significantly.
+	   Local Internet Registries are encouraged to follow up with similar policies.
+	   </t>
+	   <t>TODO: reverse delegations based on I-DUNNO?</t>
+	   <T>TODO: Recommend that RFC5513 is extended to acronyms beyond three characters, particularly those with Seven Letters (SLA).</t>
+	</section>
+	<section title="Security Considerations">
+     <t>In tradition with many other RFCs, this exercise is left to the reader.</t>
+	</section>
+  </middle>
+  <back>
+    <references title="Normative References">
+                &rfc2119;
+	</references>
+	<references title="Informative References">
+	
+	</references>
+  </back>
+</rfc>
