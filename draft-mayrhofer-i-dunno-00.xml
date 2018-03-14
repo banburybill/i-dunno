@@ -109,11 +109,13 @@
 	  </t>
 	  <t>TODO: Definition for the two notations (the traditional "party pooper" notation, and the "very funny" I-DUNNO compatible notation)</t>
 	 </section>
-	<section title='The Notation'>
-	<t>I-DUNNO leverages <xref target='RFC3629'>UTF-8</xref> to obfuscate IP addresses for humans. UTF-8 uses sequences between 1 and 4 octets to represent codepoints as follows:</t>
-	      <figure align="center" anchor="UTF8">
-          <preamble> </preamble>
-<artwork>
+	 <section title='The Notation'>
+           <t>
+             I-DUNNO leverages <xref target='RFC3629'>UTF-8</xref> to obfuscate IP addresses for humans. UTF-8 uses sequences between 1 and 4
+             octets to represent codepoints as follows:
+           </t>
+           <figure align="center" anchor="UTF8">
+             <artwork>
    Char. number range  |        UTF-8 octet sequence          
       (hexadecimal)    |              (binary)                
    --------------------+--------------------------------------
@@ -121,29 +123,47 @@
    0000 0080-0000 07FF | 110xxxxx 10xxxxxx
    0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
    0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-</artwork>	
-	</figure>
-	<t>Transcoding between plain, traditional (boring) IP address 
-	notations and I-DUNNO is performed as follows:</t>
-	   <section title='Encoding to I-DUNNO)'>
-	     <t>
-		 In order to convert the Boring Notation of an IP address into I-DUNNO, the following steps are performed:
-		 <list style='numbers'>
-		   <t>The octets of the Boring Notation are written as a bitstring in Network Byte order.</t>
-		   <t>TODO - consider adding CIDR prefix length (rfc4632) as additional bits?</t>
-		   <t>Working from left to right, the bitstring (32 bits for IPv4, 128 bits for IPv6) is allocated to 
-		   UTF-8 octet sequences.</t>
-		   <t>Note that since the number of combinations of UTF-8 octet sequence sizes accomodating exactly 32 or 128 bits 
-		   are limited, padding the bitstring for the last UTF-8 octet sequence is allowed (but only for the last one!). This means that the bitstring may be 
-		   padded with no more than 20 bits (TODO explain - 4 octect UTF 8 is 21 significant bits - clarify text). Content of padding can be chosen (TODO fix language) in order to fulfill requirements (see below).
-		   </t>
-		   <t>The resulting sequence of UTF-8 octet sequences constitutes the I-DUNNO notation, and may be presented to unsuspecting humans.</t>
+             </artwork>
+           </figure>
+
+           <section title='Forming I-DUNNO)'>
+             <t>
+               In order to convert an IP address into I-DUNNO, the following steps are performed:
+               <list style='numbers'>
+                 <t>
+                   The octets of the IP address are written as a bitstring in Network Byte order.
+                 </t>
+                 <t>
+                   Working from left to right, the bitstring (32 bits for IPv4, 128 bits for IPv6) is used to generate a list of UTF-8 octet sequences.
+                   To allocate a single UTF-8 sequence, the converter:
+                   <list style='letters'>
+                     <t>
+                       Chooses whether to generate a 1, 2, 3 or 4 octet UTF-8 sequence. The choice OUGHT TO be guided by the requirement to generate
+                       a satisfactory Confusion Level.
+                     </t>
+                     <t>
+                       Allocates bits from the bitstring to fill the vacant positions 'x' in the UTF-8 sequence (see <xref target="UTF8" />) from left to right.
+                     </t>
+                     <t>
+                       1, 2, 3 and 4 octet UTF-8 sequences require 7, 11, 16 and 21 bits respectively from the bitstring. Since the number
+                       of combinations of UTF-8 sequences accomodating exactly 32 or 128 bits is limited, in sequences where the number of bits
+                       required does not exactly match the number of available bits, the final UTF-8 sequence MUST be padded with additional bits
+                       once the available address bits are exhausted. The sequence may therefore require up to 20 bits of padding. The content
+                       of the padding SHOULD be chosen to best fulfil the Confusion Level Requirements.
+                     </t>
+                   </list>
+                 </t>
+                 <t>
+                   Once the bits in the bitstring are exhausted, the conversion is complete. The I-DUNNO representation of the address consists of the
+                   Unicode codepoints described by the list of generated UTF-8 sequences, and MAY now be presented to unsuspecting humans.
+                 </t>
 		 </list>
 		 </t>
 	   </section>
-	   <section title='Decoding (I-DUNNO to Boring)'>
-	     <t>TODO
-		 </t>
+	   <section title='Deforming I-DUNNO'>
+	     <t>
+               This section is intentionally omitted. The machines will know to do it, and by definition humans should not attempt the process.
+             </t>
 	   </section>
 	</section>
 	<section title='I-DUNNO Confusion Level Requirements'>
