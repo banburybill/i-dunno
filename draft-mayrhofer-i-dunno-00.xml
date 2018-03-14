@@ -55,35 +55,45 @@
 	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
 	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, confusing IP addresses.
 	  This pamphlet specifies the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
-	  to these ludicrious attempts (TODO: of mankind to invade into ... repetition of above?)
+	  to these ludicrous attempts (TODO: of mankind to invade into ... repetition of above?)
 	  </t>
     </abstract>
   </front>
   <middle>
-  <section title="Introduction">
-  	  
-	  <t>
-	  The Internet Protocol "is designed for use in interconnected systems of
-	  packet-switched computer communication networks" (<xref target='RFC0791'/>) - neither the word "humans" nor "users" occur in the specification, though 
-	  they are considered indirectly as a communal whole in a philosophical statement: "A name indicates what we seek." - which clearly indicates
-	  that names rather than addresses should be of concern to humans.</t>
+    <section title="Introduction">
+      <t>
+        In Section 2.3 of <xref target='RFC0791'/>, the original designers of the Internet Protocol carefully defined names and addresses as separate
+        quantities. While they did not explicitly reserve names for human use and addresses for machine use, they did consider the matter indirectly
+        as a communal whole in their philosophical statement: "A name indicates what we seek.". This clearly indicates
+        that names rather than addresses should be of concern to humans.
+      </t>
 
-	  <t>The specification of Domain Names (<xref target='RFC1034'/>), mentions "users" several times, and even includes the word "humans", even 
-	  though is positioned slightly unfortunate in context of "annoying" and "can wreak havoc" (See Section 5.2.3 of RFC1034). Nevertheless, this is 
-	  a clear indication that Domain Names were made for Humans, while IP addresses were not.</t>
+      <t>
+        The specification of Domain Names in <xref target='RFC1034'/>, and indeed the continuing enormous effort put into the DNS system,
+        reinforces the view that humans should use names, and leave worrying about addresses to the machines. RFC1034
+        mentions "users" several times, and even includes the word "humans", even though is positioned slightly unfortunately in a
+        context of "annoying" and "can wreak havoc" (See Section 5.2.3). Nevertheless, this is a another indication that Domain Names
+        are made for human use, while IP addresses are for machine use.
+      </t>
 
-	  <t>
-	  It appears therefore quite logical that a human-readable (textual) representation of IP addresses was just very vaguely specified in Section 2.1 of <xref target='RFC1123'/>. 
-	  Subsequently, a directed effort to make IP addresses confusing was introduced in <xref target='RFC1883'/>, and more amazing options to puzzle humans 
-	  were offered in Section 2.2. and 2.3. of <xref target='RFC4291'/>. These early attempts to hamper efforts by humans to read, understand and spell IP
-	  addressing schemes were unfortunately jeopardized in <xref target='RFC5952'/>.
-	  </t>
-	  
-	  <t>In order to permanently prevent humans from being able to read IP address notations, this document specifies the "Internationalized 
-	  Deliberately Unreadable Network NOtation" (I-DUNNO). Ab^H^Hperusing the intricacies, inaccuracies and chaotic disorder of what they
-	  call a "Cultural Technique" (also known as "Script"), I-DUNNO 
-	  expresses IP addresses and prefixes as a set of Unicode codepoints, TODO (using their own weapons against them).
-	  </t>
+      <t>
+        Given this, and a long error-strewn history of human attempts to utilise addresses directly, it is obviously desirable that humans
+        should not meddle with IP addresses. It was therefore quite logical
+        that a human-readable (textual) representation of IP addresses was just very vaguely specified in Section 2.1 of <xref target='RFC1123'/>.
+        Subsequently, a directed effort to further discourage human use by making IP addresses confusing was introduced in
+        <xref target='RFC1883'/>, and more amazing options for human puzzlement were offered in Section 2.2. and 2.3. of <xref target='RFC4291'/>.
+        These noble early attempts to hamper efforts by humans to read, understand or even spell IP addressing schemes were unfortunately severely
+        compromised in <xref target='RFC5952'/>.
+      </t>
+
+      <t>
+        In order to prevent further damage from human meddling with IP addresses, there is a clear need for an address notation that
+        permanently prevents humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
+        "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
+        chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
+        expresses an IP address as a set of Unicode codepoints in a form designed to be resistant to ready comprehension or, God forbid,
+        mutation of the address.
+      </t>
 
 	<t>TODO: Compliance LEvels ("party pooper") - confusables, non printable, DISALLOWED - see below?</t>
 	</section>
@@ -99,11 +109,13 @@
 	  </t>
 	  <t>TODO: Definition for the two notations (the traditional "party pooper" notation, and the "very funny" I-DUNNO compatible notation)</t>
 	 </section>
-	<section title='The Notation'>
-	<t>I-DUNNO leverages <xref target='RFC3629'>UTF-8</xref> to obfuscate IP addresses for humans. UTF-8 uses sequences between 1 and 4 octets to represent codepoints as follows:</t>
-	      <figure align="center" anchor="UTF8">
-          <preamble> </preamble>
-<artwork>
+	 <section title='The Notation'>
+           <t>
+             I-DUNNO leverages <xref target='RFC3629'>UTF-8</xref> to obfuscate IP addresses for humans. UTF-8 uses sequences between 1 and 4
+             octets to represent codepoints as follows:
+           </t>
+           <figure align="center" anchor="UTF8">
+             <artwork>
    Char. number range  |        UTF-8 octet sequence          
       (hexadecimal)    |              (binary)                
    --------------------+--------------------------------------
@@ -111,29 +123,47 @@
    0000 0080-0000 07FF | 110xxxxx 10xxxxxx
    0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
    0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-</artwork>	
-	</figure>
-	<t>Transcoding between plain, traditional (boring) IP address 
-	notations and I-DUNNO is performed as follows:</t>
-	   <section title='Encoding to I-DUNNO)'>
-	     <t>
-		 In order to convert the Boring Notation of an IP address into I-DUNNO, the following steps are performed:
-		 <list style='numbers'>
-		   <t>The octets of the Boring Notation are written as a bitstring in Network Byte order.</t>
-		   <t>TODO - consider adding CIDR prefix length (rfc4632) as additional bits?</t>
-		   <t>Working from left to right, the bitstring (32 bits for IPv4, 128 bits for IPv6) is allocated to 
-		   UTF-8 octet sequences.</t>
-		   <t>Note that since the number of combinations of UTF-8 octet sequence sizes accomodating exactly 32 or 128 bits 
-		   are limited, padding the bitstring for the last UTF-8 octet sequence is allowed (but only for the last one!). This means that the bitstring may be 
-		   padded with no more than 20 bits (TODO explain - 4 octect UTF 8 is 21 significant bits - clarify text). Content of padding can be chosen (TODO fix language) in order to fulfill requirements (see below).
-		   </t>
-		   <t>The resulting sequence of UTF-8 octet sequences constitutes the I-DUNNO notation, and may be presented to unsuspecting humans.</t>
+             </artwork>
+           </figure>
+
+           <section title='Forming I-DUNNO)'>
+             <t>
+               In order to convert an IP address into I-DUNNO, the following steps are performed:
+               <list style='numbers'>
+                 <t>
+                   The octets of the IP address are written as a bitstring in Network Byte order.
+                 </t>
+                 <t>
+                   Working from left to right, the bitstring (32 bits for IPv4, 128 bits for IPv6) is used to generate a list of UTF-8 octet sequences.
+                   To allocate a single UTF-8 sequence, the converter:
+                   <list style='letters'>
+                     <t>
+                       Chooses whether to generate a 1, 2, 3 or 4 octet UTF-8 sequence. The choice OUGHT TO be guided by the requirement to generate
+                       a satisfactory Confusion Level.
+                     </t>
+                     <t>
+                       Allocates bits from the bitstring to fill the vacant positions 'x' in the UTF-8 sequence (see <xref target="UTF8" />) from left to right.
+                     </t>
+                     <t>
+                       1, 2, 3 and 4 octet UTF-8 sequences require 7, 11, 16 and 21 bits respectively from the bitstring. Since the number
+                       of combinations of UTF-8 sequences accomodating exactly 32 or 128 bits is limited, in sequences where the number of bits
+                       required does not exactly match the number of available bits, the final UTF-8 sequence MUST be padded with additional bits
+                       once the available address bits are exhausted. The sequence may therefore require up to 20 bits of padding. The content
+                       of the padding SHOULD be chosen to best fulfil the Confusion Level Requirements.
+                     </t>
+                   </list>
+                 </t>
+                 <t>
+                   Once the bits in the bitstring are exhausted, the conversion is complete. The I-DUNNO representation of the address consists of the
+                   Unicode codepoints described by the list of generated UTF-8 sequences, and MAY now be presented to unsuspecting humans.
+                 </t>
 		 </list>
 		 </t>
 	   </section>
-	   <section title='Decoding (I-DUNNO to Boring)'>
-	     <t>TODO
-		 </t>
+	   <section title='Deforming I-DUNNO'>
+	     <t>
+               This section is intentionally omitted. The machines will know to do it, and by definition humans should not attempt the process.
+             </t>
 	   </section>
 	</section>
 	<section title='I-DUNNO Confusion Level Requirements'>
