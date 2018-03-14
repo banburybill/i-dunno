@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
  <!ENTITY rfc2119 PUBLIC ""
-          "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY rfc7830 PUBLIC ""
-          "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7830.xml">
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7830.xml">
+<!ENTITY rfc791 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.0791.xml">
+<!ENTITY rfc1034 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1034.xml">
+<!ENTITY rfc1123 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1123.xml">
+<!ENTITY rfc1883 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1883.xml">
+<!ENTITY rfc4291 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4291.xml">
+<!ENTITY rfc5952 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5952.xml">
+<!ENTITY rfc6916 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6916.xml">
+<!ENTITY rfc3629 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml">
 ]>
 
 <rfc category="exp" docName="draft-mayrhofer-i-dunno-00"
@@ -48,7 +64,7 @@
   	  
 	  <t>
 	  The Internet Protocol "is designed for use in interconnected systems of
-	  packet-switched computer communication networks" (<xref target='RFC791'/>) - neither the word "humans" nor "users" occur in the specification, though 
+	  packet-switched computer communication networks" (<xref target='RFC0791'/>) - neither the word "humans" nor "users" occur in the specification, though 
 	  they are considered indirectly as a communal whole in a philosophical statement: "A name indicates what we seek." - which clearly indicates
 	  that names rather than addresses should be of concern to humans.</t>
 
@@ -97,7 +113,6 @@
    0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 </artwork>	
 	</figure>
-	<t>A UTF-8 octet sequence 
 	<t>Transcoding between plain, traditional (boring) IP address 
 	notations and I-DUNNO is performed as follows:</t>
 	   <section title='Encoding to I-DUNNO)'>
@@ -148,7 +163,7 @@
 	   Local Internet Registries are encouraged to follow up with similar policies.
 	   </t>
 	   <t>TODO: reverse delegations based on I-DUNNO?</t>
-	   <T>TODO: Recommend that RFC5513 is extended to acronyms beyond three characters, particularly those with Seven Letters (SLA).</t>
+	   <t>TODO: Recommend that RFC5513 is extended to acronyms beyond three characters, particularly those with Seven Letters (SLA).</t>
 	</section>
 	<section title="Security Considerations">
      <t>In tradition with many other RFCs, this exercise is left to the reader.</t>
@@ -157,9 +172,15 @@
   <back>
     <references title="Normative References">
                 &rfc2119;
+		&rfc3629;
 	</references>
 	<references title="Informative References">
-	
+		&rfc791;
+		&rfc1034;
+		&rfc1123;
+		&rfc1883;
+		&rfc4291;
+		&rfc5952;
 	</references>
   </back>
 </rfc>
