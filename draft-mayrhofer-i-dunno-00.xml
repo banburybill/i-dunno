@@ -65,7 +65,7 @@
     <abstract>
       <t>
 	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
-	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, confusing IP addresses.
+	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting and confusing IP addresses.
 	  This memo describes the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
 	  to these ludicrous attempts.
 	  </t>
@@ -159,7 +159,7 @@
                      </t>
                      <t>
                        1, 2, 3 and 4 octet UTF-8 sequences require 7, 11, 16 and 21 bits respectively from the bitstring. Since the number
-                       of combinations of UTF-8 sequences accomodating exactly 32 or 128 bits is limited, in sequences where the number of bits
+                       of combinations of UTF-8 sequences accommodating exactly 32 or 128 bits is limited, in sequences where the number of bits
                        required does not exactly match the number of available bits, the final UTF-8 sequence MUST be padded with additional bits
                        once the available address bits are exhausted. The sequence may therefore require up to 20 bits of padding. The content
                        of the padding SHOULD be chosen to best fulfil the Confusion Level Requirements.
@@ -200,7 +200,7 @@
              The Satisfactory Confusion Level will make many human-machine interfaces beep, blink, silently fail or any combination thereof. This is considered sufficient to discourage most humans from deforming I-DUNNO.</t>
         </section>
         <section title='Delightful Confusion Level' anchor='delconf'>
-            <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additioanlly at least two of the following:
+            <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additionally at least two of the following:
 		<list style='symbols'>
                   <t>Characters from scripts with different directionalities.</t>
                   <t>Character classified as "Confusables".</t>
@@ -257,7 +257,7 @@ Bit seq.    | Char. number | Character Name
 	</section>
 	<section title="Security Considerations">
           <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are known to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
-          <t>In tradition with many other RFCs, the evaluation of other security aspects of I-DUNNO is left as an exercise to the reader.</t>
+          <t>In the tradition of many other RFCs, the evaluation of other security aspects of I-DUNNO is left as an exercise for the reader.</t>
 	</section>
   </middle>
   <back>
