@@ -145,14 +145,17 @@
                  </t>
                  <t>
                    Working from left to right, the bitstring (32 bits for IPv4, 128 bits for IPv6) is used to generate a list of UTF-8 octet sequences.
-                   To allocate a single UTF-8 sequence, the converter:
+                   To allocate a single UTF-8 sequence:
                    <list style='letters'>
                      <t>
-                       Chooses whether to generate a 1, 2, 3 or 4 octet UTF-8 sequence. The choice OUGHT TO be guided by the requirement to generate
-                       a satisfactory <xref target='minconf'>Minimum Confusion Level</xref> (Not to be confused with the minimum <xref target='satconf'>Satisfactory Confusion Level</xref>). Refer to the character number range in <xref target='UTF8'/> in order to identify which octet sequence lengths are valid for a given bitstring. 
+                       Choose whether to generate a 1, 2, 3 or 4 octet UTF-8 sequence. The choice OUGHT TO be guided by the requirement to generate
+                       a satisfactory <xref target='minconf'>Minimum Confusion Level</xref> (Not to be confused with the minimum
+                       <xref target='satconf'>Satisfactory Confusion Level</xref>). Refer to the character number range in <xref target='UTF8'/> in
+                       order to identify which octet sequence lengths are valid for a given bitstring. For example, a 2 octet UTF-8
+                       sequence requires the next 11 bits to have a value in the range 0080-07ff.
                      </t>
                      <t>
-                       Allocates bits from the bitstring to fill the vacant positions 'x' in the UTF-8 sequence (see <xref target="UTF8" />) from left to right.
+                       Allocate bits from the bitstring to fill the vacant positions 'x' in the UTF-8 sequence (see <xref target="UTF8" />) from left to right.
                      </t>
                      <t>
                        1, 2, 3 and 4 octet UTF-8 sequences require 7, 11, 16 and 21 bits respectively from the bitstring. Since the number
@@ -190,9 +193,9 @@
         <section title='Satisfactory Confusion Level' anchor='satconf'>
              <t>An I-DUNNO with Satisfactory Confusion Level MUST adhere the the Minimum Confusion Level, and additionally contain two of the following:
 		<list style='bullet'>
-                  <t>At least one non-printable character</t>
+                  <t>At least one non-printable character.</t>
 		  <t>Characters from at least two different Scripts.</t>
-		  <t>A character from the "Symbol" category</t>
+		  <t>A character from the "Symbol" category.</t>
                 </list>
              The Satisfactory Confusion Level will make many human-machine interfaces beep, blink, silently fail or any combination thereof. This is considered sufficient to discourage most humans from deforming I-DUNNO.</t>
         </section>
@@ -200,8 +203,8 @@
             <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additioanlly at least two of the following:
 		<list style='bullet'>
                   <t>Characters from scripts with different directionalities.</t>
-                  <t>Character classified as "Confusables"</t>
-		  <t>One or more Emojis</t>
+                  <t>Character classified as "Confusables".</t>
+		  <t>One or more Emojis.</t>
 	        </list>
     An I-DUNNO conforming to this level will cause U+1F926 with almost all humans, with the exception of those subscribed to the idna-update mailing list.</t>
 	   </section>
@@ -229,16 +232,24 @@ Bit seq.    | Char. number | Character Name
 1100011     | U+0063       | LATIN SMALL LETTER C
 0001100     | U+000C       | FORM FEED (FF)
 1101100     | U+006C       | LATIN SMALL LETTER L
-10010100100 | U+0524       | CYRILLIC CAPITAL LETTER PE WITH DESCENDER
+10010100100 | U+04A4       | CYRILLIC CAPITAL LIGATURE EN GHE
   </artwork>
 </figure>
-<t>Note that in many cases, the choice of UTF-8 sequence length is limited by the value of the respective bits (eg. 00000000011 is not a valid two-octet UTF-8 sequence)</t>
-<t>The resulting string MUST be evaluated against the Confusion Level Requirements before I-DUNNO can be declared. Given the example above:
-<list style='bullets'>
-  <t>There's at least one UTF-8 octet sequence with a length greater than 1 (U+04A4)</t>
-  <t>There are IDNA2008 DISALLOWED characters: U+000C (for good reason!) and U+04A4</t>
-</list>
-Therefore, the example above consitutes valid I-DUNNO with a satisfactory Confusion Level. U+000C particularly seems to have high confusion potential in environments where I-DUNNOs would be send to printers.</t>
+<t>
+  Note that in many cases, the choice of UTF-8 sequence length is limited by the value of the respective bits (eg. 00000000011 is not a
+  valid value for a two-octet UTF-8 sequence).
+</t>
+<t>
+  The resulting string MUST be evaluated against the Confusion Level Requirements before I-DUNNO can be declared. Given the example above:
+  <list style='bullets'>
+    <t>There is at least one UTF-8 octet sequence with a length greater than 1 (U+04A4).</t>
+    <t>There are two IDNA2008 DISALLOWED characters: U+000C (for good reason!) and U+04A4.</t>
+    <t>There is one non-printable character (U+000C).</t>
+    <t>There are characters from two different Scripts (Latin and Cyrillic).</t>
+  </list>
+  Therefore, the example above consitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have high confusion
+  potential in environments where I-DUNNOs would be send to printers.
+</t>
         </section>	   
 	<section title='IANA Considerations'>
 	   <t>Future work might extend I-DUNNO to also represent IP 
