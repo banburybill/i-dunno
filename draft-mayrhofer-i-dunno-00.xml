@@ -39,7 +39,7 @@
 
     <author initials="A.M." surname="Mayrhofer"
       fullname="Alexander Mayrhofer">
-<!--      <organization>nic.at GmbH</organization> -->
+      <organization>nic.at GmbH</organization> 
       <address>
 <!--    <postal>
      <street>Karlsplatz 1/2/9</street>
@@ -47,7 +47,7 @@
      <code>1010</code>
      <country>Austria</country>
     </postal> -->
-   <email>alex@i-dunno.at</email>
+   <email>alexander.mayrhofer@nic.at</email>
 	<uri>https://i-dunno.at/</uri>
    </address>
    </author>
@@ -83,8 +83,8 @@
       <t>
         The specification of Domain Names in <xref target='RFC1034'/>, and indeed the continuing enormous effort put into the Domain Name System,
         reinforces the view that humans should use names, and leave worrying about addresses to the machines. RFC1034
-        mentions "users" several times, and even contains the word "humans",  though in a slightly unfortunately context
-        between "annoying" and "can wreak havoc" (see Section 5.2.3). Nevertheless, this is a another indication that Domain Names
+        mentions "users" several times, and even includes the word "humans", even though it is positioned slightly unfortunately in a
+        context of "annoying" and "can wreak havoc" (See Section 5.2.3). Nevertheless, this is a another indication that Domain Names
         are made for human use, while IP addresses are for machine use.
       </t>
 
@@ -103,7 +103,7 @@
         efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
         "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
         chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
-        expresses an IP address as a sequence of Unicode characters in a form designed to be resistant to ready comprehension or, heaven forfend,
+        expresses an IP address as a set of Unicode codepoints in a form designed to be resistant to ready comprehension or, heaven forfend,
         mutation of the address.
       </t>
 
@@ -183,7 +183,7 @@
              <t>A sequence of characters is considered I-DUNNO only when there's enough potential to confuse humans. Therefore, the following levels are defined:</t>
         <section title='Minimum Confusion Level' anchor='minconf'>
              <t>As a minimum, a valid I-DUNNO MUST:
-             <list style='bullet'>
+             <list style='symbols'>
                 <t>Contain at least one UTF-8 octet sequence with a length greater than one octet.</t>
                 <t>Contain at least one character which is DISALLOWED in IDNA2008. No code point left behind! Note that this allows machines to distinguish I-DUNNO from Internationalized Domain Name labels.</t>
              </list>
@@ -192,7 +192,7 @@
         </section>
         <section title='Satisfactory Confusion Level' anchor='satconf'>
              <t>An I-DUNNO with Satisfactory Confusion Level MUST adhere the the Minimum Confusion Level, and additionally contain two of the following:
-		<list style='bullet'>
+		<list style='symbols'>
                   <t>At least one non-printable character.</t>
 		  <t>Characters from at least two different Scripts.</t>
 		  <t>A character from the "Symbol" category.</t>
@@ -201,7 +201,7 @@
         </section>
         <section title='Delightful Confusion Level' anchor='delconf'>
             <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additionally at least two of the following:
-		<list style='bullet'>
+		<list style='symbols'>
                   <t>Characters from scripts with different directionalities.</t>
                   <t>Character classified as "Confusables".</t>
 		  <t>One or more Emojis.</t>
@@ -241,23 +241,23 @@ Bit seq.    | Char. number | Character Name
 </t>
 <t>
   The resulting string MUST be evaluated against the Confusion Level Requirements before I-DUNNO can be declared. Given the example above:
-  <list style='bullets'>
+  <list style='symbols'>
     <t>There is at least one UTF-8 octet sequence with a length greater than 1 (U+04A4).</t>
     <t>There are two IDNA2008 DISALLOWED characters: U+000C (for good reason!) and U+04A4.</t>
     <t>There is one non-printable character (U+000C).</t>
     <t>There are characters from two different Scripts (Latin and Cyrillic).</t>
   </list>
-  Therefore, the example above constitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have high confusion
+  Therefore, the example above constitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have great
   potential in environments where I-DUNNOs would be send to printers.
 </t>
-        </section>	   
+  </section>	   
 	<section title='IANA Considerations'>
            <t>IANA is kindly requested to revoke all IPv4 and IPv6 address range allocations which do not allow for at least one I-DUNNO of Delightful Confusion Level. IPv4 prefixes are more likely to  be affected, hence this should easily be marketed as an effort to foster IPv6 deployment.</t> 
            <t>Furthermore, IANA is urged to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. For that purpose, "-" SHALL be declared a Letter.</t>
 	</section>
 	<section title="Security Considerations">
           <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are known to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
-     <t>In tradition with many other RFCs, the evaluation of other security aspects of I-DUNNO is left as an exercise to the reader.</t>
+          <t>In tradition with many other RFCs, the evaluation of other security aspects of I-DUNNO is left as an exercise to the reader.</t>
 	</section>
   </middle>
   <back>
