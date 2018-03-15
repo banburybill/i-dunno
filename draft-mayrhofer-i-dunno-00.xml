@@ -45,7 +45,7 @@
      <code>1010</code>
      <country>Austria</country>
     </postal> -->
-    <email>alex@i-dunno.at</email>
+   <email>alex@i-dunno.at</email>
 	<uri>https://i-dunno.at/</uri>
    </address>
    </author>
@@ -141,7 +141,7 @@
                    <list style='letters'>
                      <t>
                        Chooses whether to generate a 1, 2, 3 or 4 octet UTF-8 sequence. The choice OUGHT TO be guided by the requirement to generate
-                       a satisfactory Confusion Level. Refer to the character number range in <xref target='UTF8'/> in order to identify which octet sequence lengths are valid for a given bitstring. 
+                       a satisfactory <xref target='minconf'>Minimum Confusion Level</xref> (Not to be confused with the minimum <xref target='satconf'>Satisfactory Confusion Level</xref>). Refer to the character number range in <xref target='UTF8'/> in order to identify which octet sequence lengths are valid for a given bitstring. 
                      </t>
                      <t>
                        Allocates bits from the bitstring to fill the vacant positions 'x' in the UTF-8 sequence (see <xref target="UTF8" />) from left to right.
@@ -169,26 +169,35 @@
 	   </section>
 	</section>
 	<section title='I-DUNNO Confusion Level Requirements'>
-	     <t>A valid I-DUNNO MUST at contain at least one UTF-8 octet sequence with a length beyond one octet. Codepoints which are currently 
-		 allocated SHOULD be preferred over unallocated ones. Mixing of Unicode scripts is RECOMMENDED, as is mixing scripts with 
-		 different directionality. </t>
-		 <t>In order to distinguish an I-DUNNO from an IDN label, a valid I-DUNNO MUST contain at least one UTF-8 sequence corresponding to an 
-		 IDNA2008 DISALLOWED codepoint.</t>
-		 <t>Non printable characters are a welcome addition too, as are Confusables. No code point left behind!</t>
-    
-	<t>The Confusion Score of I-DUNNO is calculated as follows (Note: Old text, TODO - replaced by text above?):
-		 <list style='bullets'>
-		    <t>For each UTF-8 octet sequence that corresponds to an allocated code point, the score is increased by the UTF-8 octet sequence length.</t>
-			<t>For each Unicode script used in the I-DUNNO, the score is increased by 3 points.</t>
-			<t>For each codepoint listed as "confusable" (TODO xref), the score is increased by 10 points.</t>
-			<t>For each non-printable .... </t>
-	     </list>
-    </t>
-		 <t>Mixing of Unicode scripts is RECOMMENDED, as is mixing scripts with 
-		 different directionality. </t>
-		 <t>Non printable characters are a welcome addition too, as are Confusables. Contrary to Domain Names, no code point is left behind</t>
-		 <t>An I-DUNNO containing DISALLOWED characters according to IDNA2008 (TODO xref) </t>
+             <t>A sequence of characters is considered I-DUNNO only when there's enough potential to confuse humans. Therefore, the following levels are defined:</t>
+        <section title='Minimum Confusion Level' anchor='minconf'>
+             <t>As a minimum, a valid I-DUNNO MUST:
+             <list style='bullet'>
+                <t>Contain at least one UTF-8 octet sequence with a length greater than one octet.</t>
+                <t>Contain at least one character which is DISALLOWED in IDNA2008. No code point left behind! Note that this allows machines to distinguish I-DUNNO from Internationalized Domain Name labels.</t>
+             </list>
+             I-DUNNOs on this level will at least puzzle most human users with knowledge of the Legacy Notation.
+             </t>
+        </section>
+        <section title='Satisfactory Confusion Level' anchor='satconf'>
+             <t>An I-DUNNO with Satisfactory Confusion Level MUST adhere the the Minimum Confusion Level, and additionally contain two of the following:
+		<list style='bullet'>
+                  <t>At least one non-printable character</t>
+		  <t>Characters from at least two different Scripts.</t>
+		  <t>A character from the "Symbol" category</t>
+                </list>
+             The Satisfactory Confusion Level will make many human-machine interfaces beep, blink, silently fail or any combination thereof. This is considered sufficient to discourage most humans from deforming I-DUNNO.</t>
+        </section>
+        <section title='Delightful Confusion Level' anchor='delconf'>
+            <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additioanlly at least two of the following:
+		<list style='bullet'>
+                  <t>Characters from scripts with different directionalities.</t>
+                  <t>Character classified as "Confusables"</t>
+		  <t>One or more Emojis</t>
+	        </list>
+    An I-DUNNO conforming to this level will cause U+1F926 with almost all humans, with the exception of those subscribed to the idna-update mailing list.</t>
 	   </section>
+        </section>
  	<section title='Example'>
            <t>An I-DUNNO is formed and validated from the Legacy Notation IPv4 address "198.51.100.164" as follows: First, the Legacy Notation is written as a string of 32 bits in Network Byte Order:</t>
 <figure>
