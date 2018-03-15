@@ -39,7 +39,7 @@
 
     <author initials="A.M." surname="Mayrhofer"
       fullname="Alexander Mayrhofer">
-<!--      <organization>nic.at GmbH</organization> -->
+      <organization>nic.at GmbH</organization> 
       <address>
 <!--    <postal>
      <street>Karlsplatz 1/2/9</street>
@@ -47,7 +47,7 @@
      <code>1010</code>
      <country>Austria</country>
     </postal> -->
-   <email>alex@i-dunno.at</email>
+   <email>alexander.mayrhofer@nic.at</email>
 	<uri>https://i-dunno.at/</uri>
    </address>
    </author>
@@ -183,7 +183,7 @@
              <t>A sequence of characters is considered I-DUNNO only when there's enough potential to confuse humans. Therefore, the following levels are defined:</t>
         <section title='Minimum Confusion Level' anchor='minconf'>
              <t>As a minimum, a valid I-DUNNO MUST:
-             <list style='bullet'>
+             <list style='symbols'>
                 <t>Contain at least one UTF-8 octet sequence with a length greater than one octet.</t>
                 <t>Contain at least one character which is DISALLOWED in IDNA2008. No code point left behind! Note that this allows machines to distinguish I-DUNNO from Internationalized Domain Name labels.</t>
              </list>
@@ -192,7 +192,7 @@
         </section>
         <section title='Satisfactory Confusion Level' anchor='satconf'>
              <t>An I-DUNNO with Satisfactory Confusion Level MUST adhere the the Minimum Confusion Level, and additionally contain two of the following:
-		<list style='bullet'>
+		<list style='symbols'>
                   <t>At least one non-printable character.</t>
 		  <t>Characters from at least two different Scripts.</t>
 		  <t>A character from the "Symbol" category.</t>
@@ -201,7 +201,7 @@
         </section>
         <section title='Delightful Confusion Level' anchor='delconf'>
             <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additioanlly at least two of the following:
-		<list style='bullet'>
+		<list style='symbols'>
                   <t>Characters from scripts with different directionalities.</t>
                   <t>Character classified as "Confusables".</t>
 		  <t>One or more Emojis.</t>
@@ -241,7 +241,7 @@ Bit seq.    | Char. number | Character Name
 </t>
 <t>
   The resulting string MUST be evaluated against the Confusion Level Requirements before I-DUNNO can be declared. Given the example above:
-  <list style='bullets'>
+  <list style='symbols'>
     <t>There is at least one UTF-8 octet sequence with a length greater than 1 (U+04A4).</t>
     <t>There are two IDNA2008 DISALLOWED characters: U+000C (for good reason!) and U+04A4.</t>
     <t>There is one non-printable character (U+000C).</t>
