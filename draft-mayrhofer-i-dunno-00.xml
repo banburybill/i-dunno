@@ -253,8 +253,8 @@ Therefore, the example above consitutes valid I-DUNNO with a satisfactory Confus
            <t>Furthermore, IANA is requested to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. Note that while "I-DUNNO" qualifies for that registry, actual I-DUNNOs don't, even if they consist of seven Letters.</t>
 	</section>
 	<section title="Security Considerations">
-          <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are know to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
-     <t>In tradition with many other RFCs, this section was written last, when authors ran out of ideas and energy. Hence, the exercise if mostly left to the reader.</t>
+          <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are known to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
+     <t>In tradition with many other RFCs, this section was written last, when authors ran out of ideas and energy. Hence, the exercise is mostly left to the reader.</t>
 	</section>
   </middle>
   <back>
