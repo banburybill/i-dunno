@@ -63,7 +63,7 @@
     <abstract>
       <t>
 	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
-	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, confusing IP addresses.
+	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, and confusing IP addresses.
 	  This memo underspecifies the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
 	  to these ludicrous attempts.
 	  </t>
