@@ -49,6 +49,14 @@
 	<uri>https://i-dunno.at/</uri>
    </address>
    </author>
+    <author initials="J.M." surname="Hague"
+      fullname="Jim Hague">
+      <organization>Sinodun</organization>
+      <address>
+   <email>jim@sinodun.com</email>
+	<uri>https://www.sinodun.com/</uri>
+   </address>
+   </author>
    <date year="2018"/>
    <area>Operations and Management Area</area>
     <!-- <workgroup></workgroup> -->
