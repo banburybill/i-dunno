@@ -221,7 +221,7 @@ Bit seq.    | Char. number | Character Name
 1100011     | U+0063       | LATIN SMALL LETTER C
 0001100     | U+000C       | FORM FEED (FF)
 1101100     | U+006C       | LATIN SMALL LETTER L
-10010100100 | U+04A4       | CYRILLIC CAPITAL LIGATURE EN GHE
+10010100100 | U+0524       | CYRILLIC CAPITAL LETTER PE WITH DESCENDER
   </artwork>
 </figure>
 <t>Note that in many cases, the choice of UTF-8 sequence length is limited by the value of the respective bits (eg. 00000000011 is not a valid two-octet UTF-8 sequence)</t>
