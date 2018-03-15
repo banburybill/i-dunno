@@ -56,8 +56,8 @@
       <t>
 	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
 	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, confusing IP addresses.
-	  This pamphlet specifies the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
-	  to these ludicrous attempts (TODO: of mankind to invade into ... repetition of above?)
+	  This memo underspecifies the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
+	  to these ludicrous attempts.
 	  </t>
     </abstract>
   </front>
@@ -83,7 +83,7 @@
         should not meddle with IP addresses. It was therefore quite logical
         that a human-readable (textual) representation of IP addresses was just very vaguely specified in Section 2.1 of <xref target='RFC1123'/>.
         Subsequently, a directed effort to further discourage human use by making IP addresses confusing was introduced in
-        <xref target='RFC1883'/>, and more amazing options for human puzzlement were offered in Section 2.2. and 2.3. of <xref target='RFC4291'/>.
+        <xref target='RFC1883'/>, and more amazing options for human puzzlement were offered in Section 2.2. of <xref target='RFC4291'/>.
         These noble early attempts to hamper efforts by humans to read, understand or even spell IP addressing schemes were unfortunately severely
         compromised in <xref target='RFC5952'/>.
       </t>
@@ -130,7 +130,7 @@
 
            <section title='Forming I-DUNNO'>
              <t>
-               In order to convert an IP address into I-DUNNO, the following steps are performed:
+               In order to form an I-DUNNO based on the Legacy Notation of an IP address, the following steps are performed:
                <list style='numbers'>
                  <t>
                    The octets of the IP address are written as a bitstring in Network Byte order.
@@ -141,7 +141,7 @@
                    <list style='letters'>
                      <t>
                        Chooses whether to generate a 1, 2, 3 or 4 octet UTF-8 sequence. The choice OUGHT TO be guided by the requirement to generate
-                       a satisfactory Confusion Level.
+                       a satisfactory Confusion Level. Refer to the character number range in <xref target='UTF8'/> in order to identify which octet sequence lengths are valid for a given bitstring. 
                      </t>
                      <t>
                        Allocates bits from the bitstring to fill the vacant positions 'x' in the UTF-8 sequence (see <xref target="UTF8" />) from left to right.
@@ -189,7 +189,40 @@
 		 <t>Non printable characters are a welcome addition too, as are Confusables. Contrary to Domain Names, no code point is left behind</t>
 		 <t>An I-DUNNO containing DISALLOWED characters according to IDNA2008 (TODO xref) </t>
 	   </section>
-	   
+ 	<section title='Example'>
+           <t>An I-DUNNO is formed and validated from the Legacy Notation IPv4 address "198.51.100.164" as follows: First, the Legacy Notation is written as a string of 32 bits in Network Byte Order:</t>
+<figure>
+  <artwork align='center'>
+11000110001100110110010010100100
+  </artwork>
+</figure>
+<t>Since I-DUNNO requires at least one UTF-8 octet sequence with a length greater than one octet, we allocate bits in the following form:</t>
+<figure>
+  <artwork align='center'>
+  seq1  |   seq2  |   seq3  |   seq4 
+--------+---------+---------+------------
+1100011 | 0001100 | 1101100 | 10010100100
+  </artwork>
+</figure>
+<t>This translates into the following codepoints:</t>
+<figure>
+  <artwork align='center'>
+Bit seq.    | Char. number | Character Name
+------------+--------------+----------------------
+1100011     | U+0063       | LATIN SMALL LETTER C
+0001100     | U+000C       | FORM FEED (FF)
+1101100     | U+006C       | LATIN SMALL LETTER L
+10010100100 | U+04A4       | CYRILLIC CAPITAL LIGATURE EN GHE
+  </artwork>
+</figure>
+<t>Note that in many cases, the choice of UTF-8 sequence length is limited by the value of the respective bits (eg. 00000000011 is not a valid two-octet UTF-8 sequence)</t>
+<t>The resulting string MUST be evaluated against the Confusion Level Requirements before I-DUNNO can be declared. Given the example above:
+<list style='bullets'>
+  <t>There's at least one UTF-8 octet sequence with a length greater than 1 (U+04A4)</t>
+  <t>There are IDNA2008 DISALLOWED characters: U+000C (for good reason!) and U+04A4</t>
+</list>
+Therefore, the example above consitutes valid I-DUNNO with a satisfactory Confusion Level. U+000C particularly seems to have high confusion potential in environments where I-DUNNOs would be send to printers.</t>
+        </section>	   
 	<section title='IANA Considerations'>
 	   <t>Future work might extend I-DUNNO to also represent IP 
            prefixes. In that case, IANA is requested to revoke all
