@@ -159,7 +159,7 @@
                      </t>
                      <t>
                        1, 2, 3 and 4 octet UTF-8 sequences require 7, 11, 16 and 21 bits respectively from the bitstring. Since the number
-                       of combinations of UTF-8 sequences accomodating exactly 32 or 128 bits is limited, in sequences where the number of bits
+                       of combinations of UTF-8 sequences accommodating exactly 32 or 128 bits is limited, in sequences where the number of bits
                        required does not exactly match the number of available bits, the final UTF-8 sequence MUST be padded with additional bits
                        once the available address bits are exhausted. The sequence may therefore require up to 20 bits of padding. The content
                        of the padding SHOULD be chosen to best fulfil the Confusion Level Requirements.
@@ -200,7 +200,7 @@
              The Satisfactory Confusion Level will make many human-machine interfaces beep, blink, silently fail or any combination thereof. This is considered sufficient to discourage most humans from deforming I-DUNNO.</t>
         </section>
         <section title='Delightful Confusion Level' anchor='delconf'>
-            <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additioanlly at least two of the following:
+            <t>An I-DUNNO with Delightful Confusion Level MUST adhere to the Satisfactory Confusion Level, and contain additionally at least two of the following:
 		<list style='bullet'>
                   <t>Characters from scripts with different directionalities.</t>
                   <t>Character classified as "Confusables".</t>
@@ -247,7 +247,7 @@ Bit seq.    | Char. number | Character Name
     <t>There is one non-printable character (U+000C).</t>
     <t>There are characters from two different Scripts (Latin and Cyrillic).</t>
   </list>
-  Therefore, the example above consitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have high confusion
+  Therefore, the example above constitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have high confusion
   potential in environments where I-DUNNOs would be send to printers.
 </t>
         </section>	   
@@ -261,7 +261,7 @@ Bit seq.    | Char. number | Character Name
            significantly, which in turn creates more potential for I-DUNNOs
            with a satisfactory Confusion Level.
            </t>
-           <t>Furthermore, IANA is requested to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. Note that while "I-DUNNO" qualifies for that registry, actual I-DUNNOs don't, even if they consist of seven Letters.</t>
+           <t>Furthermore, IANA is requested to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accommodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. Note that while "I-DUNNO" qualifies for that registry, actual I-DUNNOs don't, even if they consist of seven Letters.</t>
 	</section>
 	<section title="Security Considerations">
           <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are known to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
