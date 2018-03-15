@@ -81,7 +81,7 @@
       <t>
         The specification of Domain Names in <xref target='RFC1034'/>, and indeed the continuing enormous effort put into the DNS system,
         reinforces the view that humans should use names, and leave worrying about addresses to the machines. RFC1034
-        mentions "users" several times, and even includes the word "humans", even though is positioned slightly unfortunately in a
+        mentions "users" several times, and even includes the word "humans", even though it is positioned slightly unfortunately in a
         context of "annoying" and "can wreak havoc" (See Section 5.2.3). Nevertheless, this is a another indication that Domain Names
         are made for human use, while IP addresses are for machine use.
       </t>
