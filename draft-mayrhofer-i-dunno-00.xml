@@ -101,7 +101,7 @@
         permanently prevents humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
         "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
         chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
-        expresses an IP address as a set of Unicode codepoints in a form designed to be resistant to ready comprehension or, God forbid,
+        expresses an IP address as a set of Unicode codepoints in a form designed to be resistant to ready comprehension or, heaven forfend,
         mutation of the address.
       </t>
 
