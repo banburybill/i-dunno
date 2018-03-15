@@ -103,7 +103,7 @@
         efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
         "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
         chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
-        expresses an IP address as a set of Unicode codepoints in a form designed to be resistant to ready comprehension or, heaven forfend,
+        expresses an IP address as a set of Unicode code points in a form designed to be resistant to ready comprehension or, heaven forfend,
         mutation of the address.
       </t>
 
@@ -122,7 +122,7 @@
 	 <section title='The Notation'>
            <t>
              I-DUNNO leverages <xref target='RFC3629'>UTF-8</xref> to obfuscate IP addresses for humans. UTF-8 uses sequences between 1 and 4
-             octets to represent codepoints as follows:
+             octets to represent code points as follows:
            </t>
            <figure align="center" anchor="UTF8">
              <artwork>
@@ -168,7 +168,7 @@
                  </t>
                  <t>
                    Once the bits in the bitstring are exhausted, the conversion is complete. The I-DUNNO representation of the address consists of the
-                   Unicode codepoints described by the list of generated UTF-8 sequences, and MAY now be presented to unsuspecting humans.
+                   Unicode code points described by the list of generated UTF-8 sequences, and MAY now be presented to unsuspecting humans.
                  </t>
 		 </list>
 		 </t>
@@ -224,7 +224,7 @@
 1100011 | 0001100 | 1101100 | 10010100100
   </artwork>
 </figure>
-<t>This translates into the following codepoints:</t>
+<t>This translates into the following code points:</t>
 <figure>
   <artwork align='center'>
 Bit seq.    | Char. number | Character Name
