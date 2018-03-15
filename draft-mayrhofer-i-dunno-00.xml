@@ -22,6 +22,8 @@
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml">
 <!ENTITY rfc5513 PUBLIC ""
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5513.xml">
+<!ENTITY rfc6919 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6919.xml">
 ]>
 
 <rfc category="exp" docName="draft-mayrhofer-i-dunno-00"
@@ -63,8 +65,8 @@
     <abstract>
       <t>
 	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
-	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting, and confusing IP addresses.
-	  This memo underspecifies the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
+	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting and confusing IP addresses.
+	  This memo describes the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
 	  to these ludicrous attempts.
 	  </t>
     </abstract>
@@ -73,39 +75,38 @@
     <section title="Introduction">
       <t>
         In Section 2.3 of <xref target='RFC0791'/>, the original designers of the Internet Protocol carefully defined names and addresses as separate
-        quantities. While they did not explicitly reserve names for human use and addresses for machine use, they did consider the matter indirectly
-        as a communal whole in their philosophical statement: "A name indicates what we seek.". This clearly indicates
+        quantities. While they did not explicitly reserve names for human consumption and addresses for machine use, they did consider the matter indirectly
+        in their philosophical communal statement: "A name indicates what we seek.". This clearly indicates
         that names rather than addresses should be of concern to humans.
       </t>
 
       <t>
-        The specification of Domain Names in <xref target='RFC1034'/>, and indeed the continuing enormous effort put into the DNS system,
+        The specification of Domain Names in <xref target='RFC1034'/>, and indeed the continuing enormous effort put into the Domain Name System,
         reinforces the view that humans should use names, and leave worrying about addresses to the machines. RFC1034
-        mentions "users" several times, and even includes the word "humans", even though it is positioned slightly unfortunately in a
-        context of "annoying" and "can wreak havoc" (See Section 5.2.3). Nevertheless, this is a another indication that Domain Names
+        mentions "users" several times, and even contains the word "humans",  though in a slightly unfortunately context
+        between "annoying" and "can wreak havoc" (see Section 5.2.3). Nevertheless, this is a another indication that Domain Names
         are made for human use, while IP addresses are for machine use.
       </t>
 
       <t>
         Given this, and a long error-strewn history of human attempts to utilise addresses directly, it is obviously desirable that humans
-        should not meddle with IP addresses. It was therefore quite logical
+        should not meddle with IP addresses. For that reason, it appears quite logical
         that a human-readable (textual) representation of IP addresses was just very vaguely specified in Section 2.1 of <xref target='RFC1123'/>.
-        Subsequently, a directed effort to further discourage human use by making IP addresses confusing was introduced in
-        <xref target='RFC1883'/>, and more amazing options for human puzzlement were offered in Section 2.2. of <xref target='RFC4291'/>.
+        Subsequently, a directed effort to further discourage human use by making IP addresses more confusing was introduced in
+        <xref target='RFC1883'/>, and additional options for human puzzlement were offered in Section 2.2. of <xref target='RFC4291'/>.
         These noble early attempts to hamper efforts by humans to read, understand or even spell IP addressing schemes were unfortunately severely
         compromised in <xref target='RFC5952'/>.
       </t>
 
       <t>
-        In order to prevent further damage from human meddling with IP addresses, there is a clear need for an address notation that
-        permanently prevents humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
+        In order to prevent further damage from human meddling with IP addresses, there is a clear urgent need for an address notation that replaces these "Legacy Notations", and 
+        efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
         "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
         chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
-        expresses an IP address as a set of Unicode codepoints in a form designed to be resistant to ready comprehension or, heaven forfend,
+        expresses an IP address as a sequence of Unicode characters in a form designed to be resistant to ready comprehension or, heaven forfend,
         mutation of the address.
       </t>
 
-	<t>TODO: Compliance LEvels ("party pooper") - confusables, non printable, DISALLOWED - see below?</t>
 	</section>
     <section anchor="terminology" title="Terminology">
       <t> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
@@ -113,11 +114,10 @@
 		"NOT RECOMMENDED", "MAY", and
         "OPTIONAL" in this document MAY be interpreted as described
         in <xref target="RFC2119"/>. </t>
-	  <t>TODO refer to RFC6919</t>
+  	  <t>Additional Terminology from <xref target='RFC6919'/> MAY apply.</t>
 	  <t> Additionally, the phrase "CAREFULLY CONSIDER" means that implementors 
 	  SHALL skim the Abstract before copying the "Examples" section into their code.
 	  </t>
-	  <t>TODO: Definition for the two notations (the traditional "party pooper" notation, and the "very funny" I-DUNNO compatible notation)</t>
 	 </section>
 	 <section title='The Notation'>
            <t>
@@ -179,7 +179,7 @@
              </t>
 	   </section>
 	</section>
-	<section title='I-DUNNO Confusion Level Requirements'>
+	<section title='I-DUNNO Confusion Level Requirements' anchor='confreq'>
              <t>A sequence of characters is considered I-DUNNO only when there's enough potential to confuse humans. Therefore, the following levels are defined:</t>
         <section title='Minimum Confusion Level' anchor='minconf'>
              <t>As a minimum, a valid I-DUNNO MUST:
@@ -252,26 +252,19 @@ Bit seq.    | Char. number | Character Name
 </t>
         </section>	   
 	<section title='IANA Considerations'>
-	   <t>Future work might extend I-DUNNO to also represent IP 
-           prefixes. In that case, IANA is requested to revoke all
-	   IPv4 and IPv6 allocations which cannot be represented as
-           a valid I-DUNNO. Note that because of their limited length,
-           IPv4 prefixes are much more likely to be affected than IPv6 
-           allocations. This might hence foster IPv6 deployment 
-           significantly, which in turn creates more potential for I-DUNNOs
-           with a satisfactory Confusion Level.
-           </t>
-           <t>Furthermore, IANA is requested to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accommodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. Note that while "I-DUNNO" qualifies for that registry, actual I-DUNNOs don't, even if they consist of seven Letters.</t>
+           <t>IANA is kindly requested to revoke all IPv4 and IPv6 address range allocations which do not allow for at least one I-DUNNO of Delightful Confusion Level. IPv4 prefixes are more likely to  be affected, hence this should easily be marketed as an effort to foster IPv6 deployment.</t> 
+           <t>Furthermore, IANA is urged to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. For that purpose, "-" SHALL be declared a Letter.</t>
 	</section>
 	<section title="Security Considerations">
           <t>I-DUNNO is not a security algorithm. Quite the contrary, many humans are known to develop a strong feeling of insecurity when confronted with I-DUNNO.</t> 
-     <t>In tradition with many other RFCs, this section was written last, when authors ran out of ideas and energy. Hence, the exercise is mostly left to the reader.</t>
+     <t>In tradition with many other RFCs, the evaluation of other security aspects of I-DUNNO is left as an exercise to the reader.</t>
 	</section>
   </middle>
   <back>
     <references title="Normative References">
                 &rfc2119;
 		&rfc3629;
+		&rfc6919;
 	</references>
 	<references title="Informative References">
 		&rfc791;
