@@ -2,7 +2,7 @@
 # - xml2rfc (https://xml2rfc.tools.ietf.org/)
 
 DRAFT=draft-mayrhofer-i-dunno
-VERSION=00
+VERSION=01
 
 XML=$(DRAFT)-$(VERSION).xml
 HTML=$(DRAFT)-$(VERSION).html
