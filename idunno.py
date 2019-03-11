@@ -23,7 +23,8 @@ def possible_next_char(bits, bitlen):
         c = top_bits(bits, bitlen, b[2])
         if c < 0x110000 and c >= b[0] and c <= b[1]:
             ch = chr(c)
-            if unicodedata.category(ch)[0] in "LMNPSC":
+            cat = unicodedata.category(ch)
+            if cat == "Cc" or cat[0] in "LMNPS" or (c >= 0x1f000 and c <= 0x1ffff):
                 res.append((ch, b[2]))
     return res
 
