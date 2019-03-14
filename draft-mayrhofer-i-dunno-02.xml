@@ -24,6 +24,8 @@
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5513.xml">
 <!ENTITY rfc6919 PUBLIC ""
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6919.xml">
+<!ENTITY rfc8369 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8369.xml">
 ]>
 
 <rfc category="exp" docName="draft-mayrhofer-i-dunno-01"
@@ -64,11 +66,13 @@
     <!-- <workgroup></workgroup> -->
     <abstract>
       <t>
-	  Domain Names were designed for humans, IP addresses were not. Still, an unruly minority of mankind sticks to invading into
-	  the realm of machine to machine communication by reading, writing, misspelling, memorizing, permuting and confusing IP addresses.
-	  This memo describes the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO") in order to put an end 
-	  to these ludicrous attempts.
-	  </t>
+        Domain Names were designed for humans, IP addresses were not. But more than 30 years after the
+        introduction of the DNS, an unruly minority of mankind persists in invading the realm of machine to machine
+        communication by reading, writing, misspelling, memorizing, permuting and confusing IP addresses.
+        This memo describes the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO"), a notation
+        designed to replace current textual representations of IP addresses with something that is both more
+        concise and which will discourage this small but important field of undesirable human activity.
+      </t>
     </abstract>
   </front>
   <middle>
@@ -83,8 +87,9 @@
       <t>
         The specification of Domain Names in <xref target='RFC1034'/>, and indeed the continuing enormous effort put into the Domain Name System,
         reinforces the view that humans should use names, and leave worrying about addresses to the machines. RFC1034
-        mentions "users" several times, and even includes the word "humans", even though it is positioned slightly unfortunately in a
-        context of "annoying" and "can wreak havoc" (See Section 5.2.3). Nevertheless, this is a another indication that Domain Names
+        mentions "users" several times, and even includes the word "humans", even though it is positioned slightly unfortunately,
+        though perfectly understandably, in a
+        context of "annoying" and "can wreak havoc" (See Section 5.2.3). Nevertheless, this is another clear indication that Domain Names
         are made for human use, while IP addresses are for machine use.
       </t>
 
@@ -95,15 +100,22 @@
         Subsequently, a directed effort to further discourage human use by making IP addresses more confusing was introduced in
         <xref target='RFC1883'/>, and additional options for human puzzlement were offered in Section 2.2. of <xref target='RFC4291'/>.
         These noble early attempts to hamper efforts by humans to read, understand or even spell IP addressing schemes were unfortunately severely
-        compromised in <xref target='RFC5952'/>.
+        compromised in <xref target='RFC5952'/>. 
       </t>
 
       <t>
-        In order to prevent further damage from human meddling with IP addresses, there is a clear urgent need for an address notation that replaces these "Legacy Notations", and 
-        efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses. To that end, this document specifies the
+        In order to prevent further damage from human meddling with IP addresses, there is a clear urgent need for an address notation that replaces these "Legacy Notations", and
+        efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses. The authors welcome <xref target='RFC8369'/> as a major
+        step in the right direction, but have identified two weaknesses in the scheme proposed therein:
+	<list style='numbers'>
+                  <t>Humans, especially younger ones, are becoming skilled at handling emoji. Over time this will negatively impact the discouragement factor.</t>
+                  <t>The proposed scheme is specific to IPv6; if a solution to this problem is to be in any way timely, it must address IPv4. After all, even taking the regrettable effects of RFC5952 into account, IPv6 remains inherently significantly more discouraging than IPv4. </t>
+	</list>
+        
+        To that end, this document specifies the
         "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
         chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
-        expresses an IP address as a set of Unicode code points in a form designed to be resistant to ready comprehension or, heaven forfend,
+        expresses an IPv4 or an IPv6 address as a set of Unicode code points in a form designed to be resistant to ready comprehension or, heaven forfend,
         mutation of the address.
       </t>
 	<t>Note that the use of I-DUNNO in the reverse DNS system is currently out of scope. The occasional human-induced absence of the magical one-character sequence U+002E is believed to cause sufficient disorder there.</t>
@@ -268,8 +280,9 @@ Bit seq.    | Char. number | Character Name
 		&rfc1123;
 		&rfc1883;
 		&rfc4291;
-		&rfc5952;
 		&rfc5513;
+		&rfc5952;
+                &rfc8369;
 	</references>
   </back>
 </rfc>
