@@ -240,6 +240,8 @@
 		  <t>One or more Emojis.</t>
 	        </list>
     An I-DUNNO conforming to this level will cause almost all humans to U+1F926, with the exception of those subscribed to the idna-update mailing list.</t>
+        <t>(We have also considered a further, higher, Confusion Level, tentatively entitled "BReak EXaminatIon or Twiddling" or "BREXIT" Level Confusion,
+        but currently we have no idea how to go about actually implementing it.)</t>
 	   </section>
         </section>
  	<section title='Example'>
