@@ -129,7 +129,7 @@
         This document therefore specifies an alternative Unicode-based notation, the "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO).
         This notation addresses each of the concerns outlined above:
 	<list style='symbols'>
-          <t>I-DUNNO can be generate Minium, Satisfactory or Delightful levels of confusion.</t>
+          <t>I-DUNNO can generate Minium, Satisfactory or Delightful levels of confusion.</t>
           <t>As well as emoji, it takes advantage of other areas of Unicode confusion.</t>
           <t>It can be used with IPv4 and IPv6 addresses.</t>
 	</list>
