@@ -193,7 +193,7 @@
                        of combinations of UTF-8 sequences accommodating exactly 32 or 128 bits is limited, in sequences where the number of bits
                        required does not exactly match the number of available bits, the final UTF-8 sequence MUST be padded with additional bits
                        once the available address bits are exhausted. The sequence may therefore require up to 20 bits of padding. The content
-                       of the padding SHOULD be chosen to best fulfil the Confusion Level Requirements.
+                       of the padding SHOULD be chosen to maximise the resulting Confusion Level.
                      </t>
                    </list>
                  </t>
@@ -212,7 +212,9 @@
 	</section>
 	<section title='I-DUNNO Confusion Level Requirements' anchor='confreq'>
              <t>A sequence of characters is considered I-DUNNO only when there's enough potential to confuse humans.</t>
-           <t>Unallocated code points MUST be avoided. While they might appear to have a great confusion power at the moment, there's a minor chance that a future allocation to a useful, legible character will reduce this capacity significantly. Worse, a code point losing its IDNA2008 <xref target='RFC5894'/> DISALLOWED property could render a whole I-DUNNO invalid.</t>
+             <t>Unallocated code points MUST be avoided. While they might appear to have great confusion power at the moment, there's a minor chance that a future
+             allocation to a useful, legible character will reduce this capacity significantly. Worse, in the (unlikely, but not impossible - see Section 3.1.3 of RFC5894) event of a code point
+             losing its IDNA2008 <xref target='RFC5894'/> DISALLOWED property, existing I-DUNNOs could be rendered less than minimally confusing, with disastrous consequences.</t>
 		 <t>The following Confusion Levels are defined:</t>
         <section title='Minimum Confusion Level' anchor='minconf'>
              <t>As a minimum, a valid I-DUNNO MUST:
@@ -278,7 +280,7 @@ Bit seq.    | Char. number | Character Name
     <t>There is one non-printable character (U+000C).</t>
     <t>There are characters from two different Scripts (Latin and Cyrillic).</t>
   </list>
-  Therefore, the example above constitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have great
+  Therefore, the example above constitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C in particular has great
   potential in environments where I-DUNNOs would be sent to printers.
 </t>
   </section>	   
