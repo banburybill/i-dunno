@@ -136,7 +136,7 @@
         We concede that I-DUNNO notation is markedly less concise than that of RFC8369.
         However, by permitting multiple code points in the representation of a single address, I-DUNNO opens up the full
         spectrum of Unicode adjacent code point interaction. This is a significant factor in allowing I-DUNNO to achieve
-        higher levels of Confusion. I-DUNNO also requires no change to the current size of Unicode code points, and so it's
+        higher levels of Confusion. I-DUNNO also requires no change to the current size of Unicode code points, and so its
         chances of adoption and implementation are (slightly) higher.
       </t>
 	<t>Note that the use of I-DUNNO in the reverse DNS system is currently out of scope. The occasional human-induced absence of the magical one-character sequence U+002E is believed to cause sufficient disorder there.</t>
