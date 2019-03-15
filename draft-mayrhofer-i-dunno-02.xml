@@ -14,6 +14,8 @@
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1883.xml">
 <!ENTITY rfc4291 PUBLIC ""
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4291.xml">
+<!ENTITY rfc5894 PUBLIC ""
+          "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5894.xml">
 <!ENTITY rfc5952 PUBLIC ""
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5952.xml">
 <!ENTITY rfc6916 PUBLIC ""
@@ -28,7 +30,7 @@
           "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8369.xml">
 ]>
 
-<rfc category="exp" docName="draft-mayrhofer-i-dunno-01"
+<rfc category="exp" docName="draft-mayrhofer-i-dunno-02"
   ipr="trust200902">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
   <?rfc toc="yes" ?>
@@ -70,8 +72,8 @@
         introduction of the DNS, an unruly minority of mankind persists in invading the realm of machine to machine
         communication by reading, writing, misspelling, memorizing, permuting and confusing IP addresses.
         This memo describes the Internationalized Deliberately Unreadable Network NOtation ("I-DUNNO"), a notation
-        designed to replace current textual representations of IP addresses with something that is both more
-        concise and which will discourage this small but important field of undesirable human activity.
+        designed to replace current textual representations of IP addresses with something that is not only more
+        concise but which will also discourage this small but obviously important subset of undesirable human activity.
       </t>
     </abstract>
   </front>
@@ -105,18 +107,37 @@
 
       <t>
         In order to prevent further damage from human meddling with IP addresses, there is a clear urgent need for an address notation that replaces these "Legacy Notations", and
-        efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses. The authors welcome <xref target='RFC8369'/> as a major
-        step in the right direction, but have identified two weaknesses in the scheme proposed therein:
-	<list style='numbers'>
-                  <t>Humans, especially younger ones, are becoming skilled at handling emoji. Over time this will negatively impact the discouragement factor.</t>
-                  <t>The proposed scheme is specific to IPv6; if a solution to this problem is to be in any way timely, it must address IPv4. After all, even taking the regrettable effects of RFC5952 into account, IPv6 remains inherently significantly more discouraging than IPv4. </t>
+        efficiently discourages humans from reading, modifying or otherwise manipulating IP addresses.
+        Research in this area long ago recognised the potential in ab^H^Hperusing the intricacies, inaccuracies and
+        chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), and with a certain
+        inexorable inevitability has focused of late on the admirable confusion (and thus discouragement) potential of <xref target='UNICODE'/>
+        as an address notation.
+        In <xref target='confreq'/>, we introduce a framework of Confusion Levels as an aid to the evaluation of the effectiveness
+        of any Unicode-based scheme in producing notation in a form designed to be resistant to ready comprehension or, heaven forfend,
+        mutation of the address, and so effecting the desired confusion and discouragement.
+      </t>
+
+      <t>
+        The authors welcome <xref target='RFC8369'/> as a major step in the right direction.
+        We have, though some reservations about the scheme proposed therein:
+	<list style='symbols'>
+          <t>Our analysis of the proposed scheme indicates that, while impressively concise, it fails to attain no more than at best a Minimum Confusion Level in our classification.</t>
+          <t>Humans, especially younger ones, are becoming skilled at handling emoji. Over time this will negatively impact the discouragement factor.</t>
+          <t>The proposed scheme is specific to IPv6; if a solution to this problem is to be in any way timely, it must, as a matter of the highest priority, address IPv4. After all, even taking the regrettable effects of RFC5952 into account, IPv6 does at least remain inherently significantly more confusing and discouraging than IPv4.</t>
 	</list>
         
-        To that end, this document specifies the
-        "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO). By ab^H^Hperusing the intricacies, inaccuracies and
-        chaotic disorder of what humans are pleased to call a "Cultural Technique" (also known as "Script"), I-DUNNO
-        expresses an IPv4 or an IPv6 address as a set of Unicode code points in a form designed to be resistant to ready comprehension or, heaven forfend,
-        mutation of the address.
+        This document therefore specifies an alternative Unicode-based notation, the "Internationalized Deliberately Unreadable Network NOtation" (I-DUNNO).
+        This notation addresses each of the concerns outlined above:
+	<list style='symbols'>
+          <t>I-DUNNO can be generate Minium, Satisfactory or Delightful levels of confusion.</t>
+          <t>As well as emoji, it takes advantage of other areas of Unicode confusion.</t>
+          <t>It can be used with IPv4 and IPv6 addresses.</t>
+	</list>
+        We concede that I-DUNNO notation is markedly less concise than that of RFC8369.
+        However, by permitting multiple code points in the representation of a single address, I-DUNNO opens up the full
+        spectrum of Unicode adjacent code point interaction. This is a significant factor in allowing I-DUNNO to achieve
+        higher levels of Confusion. I-DUNNO also requires no change to the current size of Unicode code points, and so it's
+        chances of adoption and implementation are (slightly) higher.
       </t>
 	<t>Note that the use of I-DUNNO in the reverse DNS system is currently out of scope. The occasional human-induced absence of the magical one-character sequence U+002E is believed to cause sufficient disorder there.</t>
         <t>Media Access Control (MAC) addresses are totally out of the question.</t>
@@ -191,7 +212,7 @@
 	</section>
 	<section title='I-DUNNO Confusion Level Requirements' anchor='confreq'>
              <t>A sequence of characters is considered I-DUNNO only when there's enough potential to confuse humans.</t>
-           <t>Unallocated code points MUST be avoided. While they might appear to have a great confusion power at the moment, there's a minor chance that a future allocation to a useful, legible character will reduce this capacity significantly. Worse, a code point losing its IDNA2008 DISALLOWED property could render a whole I-DUNNO invalid.</t>
+           <t>Unallocated code points MUST be avoided. While they might appear to have a great confusion power at the moment, there's a minor chance that a future allocation to a useful, legible character will reduce this capacity significantly. Worse, a code point losing its IDNA2008 <xref target='RFC5894'/> DISALLOWED property could render a whole I-DUNNO invalid.</t>
 		 <t>The following Confusion Levels are defined:</t>
         <section title='Minimum Confusion Level' anchor='minconf'>
              <t>As a minimum, a valid I-DUNNO MUST:
@@ -256,11 +277,11 @@ Bit seq.    | Char. number | Character Name
     <t>There are characters from two different Scripts (Latin and Cyrillic).</t>
   </list>
   Therefore, the example above constitutes valid I-DUNNO with a Satisfactory Confusion Level. U+000C particularly seems to have great
-  potential in environments where I-DUNNOs would be send to printers.
+  potential in environments where I-DUNNOs would be sent to printers.
 </t>
   </section>	   
 	<section title='IANA Considerations'>
-           <t>IANA is kindly requested to revoke all IPv4 and IPv6 address range allocations which do not allow for at least one I-DUNNO of Delightful Confusion Level. IPv4 prefixes are more likely to  be affected, hence this should easily be marketed as an effort to foster IPv6 deployment.</t> 
+           <t>IANA is kindly requested to revoke all IPv4 and IPv6 address range allocations which do not allow for at least one I-DUNNO of Delightful Confusion Level. IPv4 prefixes are more likely to  be affected, hence this can easily be marketed as an effort to foster IPv6 deployment.</t> 
            <t>Furthermore, IANA is urged to expand the <xref target='RFC5513'>Internet TLA Registry</xref> to accomodate Seven Letter Acronyms (SLA) for obvious reasons, and register 'I-DUNNO'. For that purpose, "-" SHALL be declared a Letter.</t>
 	</section>
 	<section title="Security Considerations">
@@ -272,17 +293,27 @@ Bit seq.    | Char. number | Character Name
     <references title="Normative References">
                 &rfc2119;
 		&rfc3629;
+                &rfc5894;
 		&rfc6919;
 	</references>
 	<references title="Informative References">
-		&rfc791;
-		&rfc1034;
-		&rfc1123;
-		&rfc1883;
-		&rfc4291;
-		&rfc5513;
-		&rfc5952;
-                &rfc8369;
+	  &rfc791;
+	  &rfc1034;
+	  &rfc1123;
+	  &rfc1883;
+	  &rfc4291;
+	  &rfc5513;
+	  &rfc5952;
+          &rfc8369;
+          <reference anchor='UNICODE' target='http://www.unicode.org/versions/latest'>
+            <front>
+              <title>The Unicode Standard</title>
+              <author>
+                <organization>The Unicode Consortium</organization>
+              </author>
+              <date/>
+            </front>
+          </reference>
 	</references>
   </back>
 </rfc>
